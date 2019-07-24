@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import { Subject } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
@@ -12,7 +12,7 @@ import { Item } from './module/Item';
 })
 
 export class ItemService {
- 
+  private ItemUpdate= new Subject<Item[]>();
   apiURL: string = 'http://localhost:8080/api/v1/items';
   
   constructor(private httpClient: HttpClient) {}
@@ -20,9 +20,12 @@ export class ItemService {
   {
     
     return this.httpClient.post(`${this.apiURL}/`,item);
-   
+    
   }
-
+  getItemUpdateListener()
+  {
+    return this.ItemUpdate.asObservable(); 
+  } 
   deleteItem(ItemNo)
   {
     return this.httpClient.delete<Item[]>(`${this.apiURL}/`+ItemNo);
@@ -42,9 +45,14 @@ export class ItemService {
   {
     return this.httpClient.get<Item>(`${this.apiURL}/`+ItemNo);
   }
+  
   public  getItems()
   {
-   return this.httpClient.get<Item[]>(`${this.apiURL}/`);
+    return this.httpClient.get<Item[]>(`${this.apiURL}/`).subscribe(items=>{
+ 
+    this.ItemUpdate.next(items);
+  
+  });
   }
   
 }

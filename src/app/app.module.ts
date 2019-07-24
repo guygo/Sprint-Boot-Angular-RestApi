@@ -9,7 +9,7 @@ import { AddItemComponent } from './Item/add-item/add-item.component';
 import { HttpClientModule, HTTP_INTERCEPTORS }    from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material.module';
-import { HttpErrorInterceptor } from './http-error.interceptor';
+
 import { HeaderComponent } from './header/header.component';
 
 @NgModule({
@@ -29,11 +29,7 @@ import { HeaderComponent } from './header/header.component';
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [ {
-    provide: HTTP_INTERCEPTORS,
-    useClass: HttpErrorInterceptor,
-    multi: true
-  }],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

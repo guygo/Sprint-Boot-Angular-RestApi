@@ -23,16 +23,21 @@ export class AddItemComponent implements OnInit {
     });
   }
   onSaveItem(){
-    this.router.navigate(["/"]);
+    
     if(this.form.invalid)
     {
       return;
     }
-    
+    this.router.navigate(["/"]);
     this.itemService.postItem(this.form.value).subscribe(res=>{
-      
-      this.router.navigate["/"];
-    });
+      if(res=='success'){
+        this.router.navigate(["/"]);
+      }
+      else
+      {
+        alert('failed in creating item');
+      }
+  });
     
   }
 

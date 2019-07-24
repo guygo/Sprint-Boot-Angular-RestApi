@@ -1,5 +1,6 @@
 package com.task.Items;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +17,8 @@ public class Item {
     Long itemNo;
     String name;
     Integer amount;
+    
+    @Column(unique=true,nullable = false)
     String inventoryCode;
    
     public Long getItemNo() {
