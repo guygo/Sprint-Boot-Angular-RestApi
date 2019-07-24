@@ -1,27 +1,20 @@
-# FrontEnd
+# Item  simple rest Api
+using spring boot as backend 
+and angular for frontend
+enabling to post,delete,put a item
+## add a item
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.0.
+![](images/add.png)
+## show items
+also enable delete item from here,look on specific one via the red buttons.deposit/withdraw(update item amount). 
+![](images/list-all.png)
+## show only one
+![](images/showitem.png)
+## swagger ui
+also you can take via swagger ui on the rest api http://localhost:8080/swagger-ui.html (8080 is the default port of the server).
+![](images/swagger.png)
+## docker image also exist for fast deploy on any system that contain docker engine  
+use docker pull guygo/item-image for pulling the image
+and docker run -p 8080:8080 -it -d guygo/item-image for starting the app
+and than go to localhost 8080
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
