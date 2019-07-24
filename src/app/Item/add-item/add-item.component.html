@@ -1,0 +1,23 @@
+
+<mat-card>
+   
+    <form [formGroup]="form" (submit)="onSaveItem()" >
+      <mat-form-field>
+        <input matInput type="text" formControlName="name" placeholder="item name">
+        <mat-error *ngIf="form.get('name').invalid">Please enter name.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" formControlName="inventoryCode" placeholder="item inventoryCode">
+        <mat-error *ngIf="form.get('inventoryCode').invalid">Please enter item's inventoryCode.</mat-error>
+      </mat-form-field>
+      
+      <mat-form-field>
+        <textarea matInput formControlName="amount" placeholder="amount"></textarea>
+        <mat-error *ngIf="form.get('amount').invalid">Please amount of items in stock.</mat-error>
+      </mat-form-field>
+       <br/>
+       <br/>
+      <button mat-raised-button color="primary" type="submit">Save Item</button>
+    </form>
+  </mat-card>
+  

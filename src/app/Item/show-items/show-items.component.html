@@ -1,0 +1,60 @@
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    
+    <ng-container matColumnDef="Item No">
+      <th mat-header-cell *matHeaderCellDef> Item No. </th>
+      <td mat-cell *matCellDef="let element"><a mat-raised-button color="warn" [routerLink]="['/showItem',element.itemNo]"  routerLinkActive="router-link-active" > {{element.itemNo}}</a> </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+  
+   
+    <ng-container matColumnDef="inventory code">
+      <th mat-header-cell *matHeaderCellDef> Inventory code </th>
+      <td mat-cell *matCellDef="let element"> {{element.inventoryCode}} </td>
+    </ng-container>
+  
+    
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef> Amount </th>
+      <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+    </ng-container>
+    <ng-container matColumnDef="deposit">
+  <th mat-header-cell  *matHeaderCellDef > deposit </th>
+  <td mat-cell *matCellDef="let row" >
+      <button (click)="deposit(row.itemNo)" mat-button mat-raised-button color="primary">
+          <mat-icon>keyboard_arrow_up</mat-icon>
+         
+      </button>
+  </td>
+</ng-container>
+<ng-container matColumnDef="withdraw">
+  <th mat-header-cell  *matHeaderCellDef > withdraw </th>
+  <td mat-cell *matCellDef="let row" >
+      <button (click)="withdraw(row.itemNo)" mat-button mat-raised-button color="primary">
+          <mat-icon>keyboard_arrow_down</mat-icon>
+         
+      </button>
+  </td>
+</ng-container>
+<ng-container matColumnDef="delete">
+    <th mat-header-cell  *matHeaderCellDef > delete </th>
+    <td mat-cell *matCellDef="let row" >
+        <button (click)="delete(row.itemNo)" mat-button mat-raised-button color="warn">
+            <mat-icon>delete</mat-icon>
+           
+        </button>
+    </td>
+  </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
